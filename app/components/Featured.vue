@@ -23,6 +23,11 @@
     mounted() {
       SelectedPageService.getInstance().updateSelectedPage("Featured");
     },
+    data() {
+      return {
+        Home: Home,
+      }
+    },
     methods: {
       onDrawerButtonTap() {
         utils.showDrawer();
