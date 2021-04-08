@@ -1,5 +1,5 @@
 <template>
-    <Page class="page">
+    <Page class="page" backgroundColor="rgba(67, 55, 142, 0.7)">
       <ActionBar class="action-bar">
         <NavigationButton visibility="hidden"/>
         <GridLayout columns="*, 50">
@@ -41,6 +41,10 @@
 </template>
 
 <script>
+
+    import LoginPage from "./LoginPage";
+    import { Http } from '@nativescript/core';
+
     export default {
         data() {
             return {
@@ -52,10 +56,23 @@
             };
         },
         methods: {
-            onCreateAccount() {
-                this.$root.isConnected = true;
-                this.$root.userName = this.usernameRegisterValue;
-                this.$navigateTo(Home);
+            async createUser(){
+                await Http.request({
+                    url: "http://gostyle.thibaultdct.fr:8080/gostyle/users",
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    content: JSON.stringify({
+                            mail: this.emailRegisterValue,
+                            mdp: this.passwordRegisterValue,
+                            nom: this.nameRegisterValue,
+                            prenom: this.firstnameRegisterValue,
+                            pseudo: this.usernameRegisterValue,
+                    })
+                })
+            },
+            async onCreateAccount() {
+                await this.createUser();
+                this.$navigateTo(LoginPage);
             }
         }
     };

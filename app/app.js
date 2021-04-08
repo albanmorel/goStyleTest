@@ -12,5 +12,8 @@ new Vue({
   data: {
     isConnected: false,
     userName: '',
+    userToken: '',
+    userId: '',
+    coupons: {},
   }
 }).$start()

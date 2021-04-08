@@ -1,9 +1,9 @@
 <template lang="html">
     <RadSideDrawer ref="drawer" drawerLocation="Right" gesturesEnabled="true" :drawerTransition="transition">
-        <StackLayout ~drawerContent backgroundColor="#ffffff">
+        <StackLayout ~drawerContent backgroundColor="#43378E">
             <DrawerContent/>
         </StackLayout>
-        <Frame ~mainContent ref="drawerMainContent">
+        <Frame ~mainContent ref="drawerMainContent" >
             <Home/>
         </Frame>
     </RadSideDrawer>
